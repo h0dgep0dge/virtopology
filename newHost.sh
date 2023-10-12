@@ -43,17 +43,12 @@ host_veth=eth0
 hub_veth="$name-veth"
 
 ip netns add $name
-ip -n $name link add $host_veth type veth peer name $hub_veth
-ip -n $name link set $hub_veth netns $hub
-ip -n $hub link set $hub_veth master br0
-ip -n $hub link set $hub_veth up
+ip -n "$name" link set lo up
 
-ip -n $name link set lo up
-ip -n $name link set $host_veth up
-ip -n $name addr add $ip dev $host_veth
+./addLink.sh "$name" "$host_veth" "$ip" "$hub"
 
 for port in "${services[@]}"; do
-    ip netns exec $name ncat -kl $port -c cat &
+    ./addService $name $port
 done
 
 
