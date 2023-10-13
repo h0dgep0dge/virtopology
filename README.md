@@ -27,10 +27,10 @@ addService.sh   start a listener in a namespace
     ./newHost.sh client2
     ./newHost.sh client3
     ./newHost.sh client4
-    ./hostToHub.sh client1 eth0 192.168.0.1/24
-    ./hostToHub.sh client2 eth0 192.168.0.2/24
-    ./hostToHub.sh client3 eth0 192.168.0.3/24
-    ./hostToHub.sh client4 eth0 192.168.0.4/24
+    ./hostToHub.sh client1 eth0 192.168.0.1/24 switch
+    ./hostToHub.sh client2 eth0 192.168.0.2/24 switch
+    ./hostToHub.sh client3 eth0 192.168.0.3/24 switch
+    ./hostToHub.sh client4 eth0 192.168.0.4/24 switch
 
 ## Star topology
 

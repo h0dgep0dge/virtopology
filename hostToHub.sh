@@ -29,8 +29,8 @@ done
 
 name="${pos_arguments[0]}"
 host_veth="${pos_arguments[1]}"
-ip="${pos_arguments[0]}"
-hub="${pos_arguments[1]}"
+ip="${pos_arguments[2]}"
+hub="${pos_arguments[3]}"
 hub_veth="$name-veth"
 
 if [[ -z $name || -z $host_veth || -z $ip || -z $hub ]]; then
