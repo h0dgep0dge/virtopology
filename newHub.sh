@@ -33,6 +33,7 @@ if [[ -z $name ]]; then
     usage
 fi
 
-ip netns add "$name"
+./newHost.sh "$name"
+
 ip -n "$name" link add br0 type bridge
 ip -n "$name" link set br0 up
