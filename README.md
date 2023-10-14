@@ -42,10 +42,10 @@ addService.sh   start a listener in a namespace
     ./newHost.sh point2
     ./newHost.sh point3
     ./newHost.sh point4
-    ./hostToHost.sh client1 192.168.0.2 center 192.168.0.1
-    ./hostToHost.sh client2 192.168.0.3 center 192.168.0.1
-    ./hostToHost.sh client3 192.168.0.4 center 192.168.0.1
-    ./hostToHost.sh client4 192.168.0.5 center 192.168.0.1
+    ./hostToHost.sh point1 192.168.0.2 center 192.168.0.1
+    ./hostToHost.sh point2 192.168.0.3 center 192.168.0.1
+    ./hostToHost.sh point3 192.168.0.4 center 192.168.0.1
+    ./hostToHost.sh point4 192.168.0.5 center 192.168.0.1
 
 ## Tree Topology
 
