@@ -65,3 +65,8 @@ addService.sh   start a listener in a namespace
     ./hostToHost.sh layer1_1 10.1.0.1 layer2_1 10.2.0.1
     ./hostToHost.sh layer1_1 10.1.0.1 layer2_2 10.2.0.2
     ./hostToHost.sh layer1_2 10.1.0.2 layer2_3 10.2.1.1
+
+# Credits and Prior Art
+
+Topology Graphics from NetworkTopologies.png: Maksim derivative work: Malyszkz (talk) - NetworkTopologies.png, Public Domain, https://commons.wikimedia.org/w/index.php?curid=15006915
+vSDNEmul: A Software-Defined Network Emulator Based on Container Virtualization https://arxiv.org/abs/1908.10980
