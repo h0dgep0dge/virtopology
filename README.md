@@ -79,6 +79,10 @@ addService.sh   start a listener in a namespace
     
     # bridge the "wan" veth to the physical network (this requires an existing bridge)
     ip link set vrouter0 master br0
+    
+    # Enable ip routing and source NATing
+    ip netns exec router sh -c 'echo 1 > /proc/sys/net/ipv4/ip_forward'
+    ip netns exec router iptables -n nat -A POSTROUTING -o wan0 -j MASQUERADE
 
     for i in {1..5}; do
         ./newHost.sh client$i
