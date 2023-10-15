@@ -21,7 +21,7 @@ addService.sh   start a listener in a namespace
 
 ## Bus Topology
 
-<img src="topologies/bus.png" alt="drawing" height="200"/>
+<img src="topologies/bus.png" height="200"/>
 
     ./newHub.sh switch # Create a bridging NS
     ./newHost.sh client1
@@ -35,7 +35,7 @@ addService.sh   start a listener in a namespace
 
 ## Star topology
 
-<img src="topologies/star.png" alt="drawing" height="200"/>
+<img src="topologies/star.png" height="200"/>
 
     ./newHost.sh center
     ./newHost.sh point1
@@ -49,7 +49,7 @@ addService.sh   start a listener in a namespace
 
 ## Tree Topology
 
-<img src="topologies/tree.png" alt="drawing" height="200"/>
+<img src="topologies/tree.png" height="200"/>
 
     ./newHost.sh root
     ./newHost.sh layer1_1
@@ -65,6 +65,30 @@ addService.sh   start a listener in a namespace
     ./hostToHost.sh layer1_1 10.1.0.1 layer2_1 10.2.0.1
     ./hostToHost.sh layer1_1 10.1.0.1 layer2_2 10.2.0.2
     ./hostToHost.sh layer1_2 10.1.0.2 layer2_3 10.2.1.1
+
+## Ring Topology with ring routing
+
+<img src="topologies/ring.png" height="200">
+
+    ./newHost.sh node1
+    ip netns exec node1 sh -c 'echo 1 > /proc/sys/net/ipv4/ip_forward'
+
+    lastip="192.168.0.1"
+    lastname="node1"
+
+    for i in {2..10}; do
+        ./newHost.sh node$i
+        ip netns exec node$i sh -c 'echo 1 > /proc/sys/net/ipv4/ip_forward'
+
+        ./hostToHost.sh $lastname $lastip node$i 192.168.0.$i
+        ip -n node$i route add default via $lastip
+
+        lastip=192.168.0.$i
+        lastname=node$i
+    done
+
+    ./hostToHost.sh $lastname $lastip node1 192.168.0.1
+    ip -n node1 route add default via $lastip
 
 ## Bus Topology with nominated router
 
