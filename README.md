@@ -7,15 +7,13 @@ None! Provided with absolutely no warranty, guarantee, or mormon tea. You need t
 
 # Tools
 
-newHub.sh       create a namespace with a bridge
-
-newHost.sh      create an empty namespace
-
-hostToHub.sh    create a veth link between two namespaces, one with a bridge
-
-hostToHost.sh   create a point-to-point veth link between 2 namespaces
-
-addService.sh   start a listener in a namespace
+| Script          | Function |
+| --------------- | ------------|
+| newHub.sh       | Create a namespace with a bridge |
+| newHost.sh      | Create an empty namespace |
+| hostToHub.sh    | Create a veth link between two namespaces, one with a bridge |
+| hostToHost.sh   | Create a point-to-point veth link between 2 namespaces |
+| addService.sh   | Start a listener in a namespace |
 
 # Examples
 
