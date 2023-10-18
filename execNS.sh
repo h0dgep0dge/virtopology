@@ -40,4 +40,4 @@ if [[ -z $name ]]; then
     usage
 fi
 
-ip netns exec $name ${command[@]}
+nsenter --net="hosts/$name/netns" ${command[@]}

@@ -41,7 +41,7 @@ fi
 
 
 ./execNS.sh "$name_a" \; ip link add "$veth_a" type veth peer name "$veth_b"
-./execNS.sh "$name_a" \; ip link set "$veth_b" netns "$name_b"
+./execNS.sh "$name_a" \; ip link set "$veth_b" netns "hosts/$name_b/netns"
 
 ./execNS.sh "$name_a" \; ip addr add "$ip_a/32" peer "$ip_b/32" dev "$veth_a"
 ./execNS.sh "$name_a" \; ip link set "$veth_a" up

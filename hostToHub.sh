@@ -39,7 +39,7 @@ fi
 
 
 ./execNS.sh "$name" \; ip link add "$host_veth" type veth peer name "$hub_veth"
-./execNS.sh "$name" \; ip link set "$hub_veth" netns "$hub"
+./execNS.sh "$name" \; ip link set "$hub_veth" netns "hosts/$hub/netns"
 ./execNS.sh "$hub" \;  ip link set "$hub_veth" master br0
 ./execNS.sh "$hub" \;  ip link set "$hub_veth" up
 

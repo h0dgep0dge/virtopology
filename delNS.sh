@@ -30,4 +30,6 @@ if [[ -z $name ]]; then
     usage
 fi
 
-ip netns del "$name"
+umount "hosts/$name/netns"
+# scan hosts/$name/services and kill PIDs
+rm -r "hosts/$name"

@@ -30,4 +30,8 @@ if [[ -z $name ]]; then
     usage
 fi
 
-ip netns add "$name"
+
+mkdir -p "hosts/$name"
+touch "hosts/$name/netns"
+touch "hosts/$name/services"
+unshare --net="hosts/$name/netns" /bin/true
