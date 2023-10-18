@@ -29,7 +29,7 @@ for (( c=1; c<=$1; c++ )); do
         ./hostToHub.sh client$i eth0 192.168.0.$i/24 hub$c
     done
     for i in {1..5}; do
-        ip netns del client$i
+        ./delNS.sh client$i
     done
-    ip netns del hub$c
+    ./delNS.sh hub$c
 done
