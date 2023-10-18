@@ -4,7 +4,7 @@ usage() {
     cat << EOF
 Usage: $0 NAME [-h | --help]
 
-    NAME    The name of the netns to delete
+    NAME    The name of the net namespace to delete
     --help  Show this message
 EOF
 exit 1

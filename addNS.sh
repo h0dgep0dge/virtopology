@@ -4,7 +4,7 @@ usage() {
     cat << EOF
 Usage: $0 NAME [-h | --help]
 
-    NAME    The name of the host to create
+    NAME    The name of the net namespace to create
     --help  Show this message
 EOF
 exit 1
