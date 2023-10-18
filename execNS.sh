@@ -6,6 +6,9 @@ Usage: $0 NAME [-h | --help] \; COMMAND ARGUMENTS
 
     NAME    The name of the NS in which to execute the command
     --help  Show this message
+    \;       Deliminator to indicate start of command
+    COMMAND
+    ARGUMENTS
 EOF
 exit 1
 }
