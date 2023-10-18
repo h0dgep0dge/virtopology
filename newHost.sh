@@ -33,10 +33,10 @@ if [[ -z $name ]]; then
     usage
 fi
 
-ip netns add "$name"
-ip -n "$name" link set lo up
+./addNS.sh "$name"
+./execNS.sh "$name" \; ip link set lo up
 
 if [[ -n $forwarding ]]; then
-    ip netns exec "$name" sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
-    ip netns exec "$name" sh -c "echo 1 > /proc/sys/net/ipv6/conf/all/forwarding"
+    ./execNS.sh "$name" \; sysctl net.ipv4.ip_forward=1
+    ./execNS.sh "$name" \; sysctl net.ipv6.conf.all.forwarding=1
 fi

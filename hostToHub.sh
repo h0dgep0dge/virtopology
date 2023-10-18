@@ -38,10 +38,10 @@ if [[ -z $name || -z $host_veth || -z $ip || -z $hub ]]; then
 fi
 
 
-ip -n "$name" link add "$host_veth" type veth peer name "$hub_veth"
-ip -n "$name" link set "$hub_veth" netns "$hub"
-ip -n "$hub"  link set "$hub_veth" master br0
-ip -n "$hub"  link set "$hub_veth" up
+./execNS.sh "$name" \; ip link add "$host_veth" type veth peer name "$hub_veth"
+./execNS.sh "$name" \; ip link set "$hub_veth" netns "$hub"
+./execNS.sh "$hub" \;  ip link set "$hub_veth" master br0
+./execNS.sh "$hub" \;  ip link set "$hub_veth" up
 
-ip -n "$name" link set "$host_veth" up
-ip -n "$name" addr add "$ip" dev "$host_veth"
+./execNS.sh "$name" \; ip link set "$host_veth" up
+./execNS.sh "$name" \; ip addr add "$ip" dev "$host_veth"

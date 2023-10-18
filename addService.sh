@@ -39,4 +39,4 @@ if [[ -z $command ]]; then
     command=cat
 fi
 
-ip netns exec "$name" ncat -kl "$port" -c "$command" &
+./execNS.sh "$name" \; ncat -kl "$port" -c "$command" &

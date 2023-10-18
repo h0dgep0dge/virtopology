@@ -35,5 +35,5 @@ fi
 
 ./newHost.sh "$name"
 
-ip -n "$name" link add br0 type bridge
-ip -n "$name" link set br0 up
+./execNS.sh "$name" \; ip link add br0 type bridge
+./execNS.sh "$name" \; ip link set br0 up

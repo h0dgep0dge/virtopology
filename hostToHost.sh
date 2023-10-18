@@ -40,11 +40,11 @@ if [[ -z $name_a || -z $ip_a || -z $name_b || -z $ip_b ]]; then
 fi
 
 
-ip -n "$name_a" link add "$veth_a" type veth peer name "$veth_b"
-ip -n "$name_a" link set "$veth_b" netns "$name_b"
+./execNS.sh "$name_a" \; ip link add "$veth_a" type veth peer name "$veth_b"
+./execNS.sh "$name_a" \; ip link set "$veth_b" netns "$name_b"
 
-ip -n "$name_a" addr add "$ip_a/32" peer "$ip_b/32" dev "$veth_a"
-ip -n "$name_a" link set "$veth_a" up
+./execNS.sh "$name_a" \; ip addr add "$ip_a/32" peer "$ip_b/32" dev "$veth_a"
+./execNS.sh "$name_a" \; ip link set "$veth_a" up
 
-ip -n "$name_b" addr add "$ip_b/32" peer "$ip_a/32" dev "$veth_b"
-ip -n "$name_b" link set "$veth_b" up
+./execNS.sh "$name_b" \; ip addr add "$ip_b/32" peer "$ip_a/32" dev "$veth_b"
+./execNS.sh "$name_b" \; ip link set "$veth_b" up
